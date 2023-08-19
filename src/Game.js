@@ -25,16 +25,17 @@ class Game extends Component {
 
     setTimeout(() => {
       this.setState({ isRolling: false });
-    }, 1000);
+    }, 1200);
   }
 
   render() {
     let { dice1, dice2 } = this.state;
+    let shake = this.state.isRolling ? "shaking" : "";
     return (
       <div className="icon">
         <div>
-          <i className={`fas fa-dice-${dice1}`}></i>
-          <i className={`fas fa-dice-${dice2}`}></i>
+          <i className={`fas  ${shake} fa-dice-${dice1}`}></i>
+          <i className={`fas ${shake} fa-dice-${dice2}`}></i>
         </div>
 
         <button
