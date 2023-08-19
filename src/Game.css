@@ -1,0 +1,18 @@
+.icon {
+  display: block;
+  align-items: center;
+  padding: 100px;
+}
+
+.fas {
+  font-size: 8rem;
+  margin: 30px;
+  color: #7b6cd3;
+}
+
+.roll-btn {
+  color: white;
+  background-color: #7b6cd3;
+  font-size: 2rem;
+  margin-top: 50px;
+}
