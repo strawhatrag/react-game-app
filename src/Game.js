@@ -23,8 +23,9 @@ class Game extends Component {
 
     this.setState({ dice1: rand1, dice2: rand2, isRolling: true });
 
-    if (this.state.isRolling) {
-    }
+    setTimeout(() => {
+      this.setState({ isRolling: false });
+    }, 1000);
   }
 
   render() {
@@ -36,8 +37,12 @@ class Game extends Component {
           <i className={`fas fa-dice-${dice2}`}></i>
         </div>
 
-        <button className="roll-btn" onClick={this.handleRoll}>
-          Roll Dice!
+        <button
+          className="roll-btn"
+          onClick={this.handleRoll}
+          disabled={this.state.isRolling}
+        >
+          {this.state.isRolling ? "Rolling..." : "Roll Dice"}
         </button>
       </div>
     );
