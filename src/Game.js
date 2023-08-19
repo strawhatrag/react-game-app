@@ -1,35 +1,44 @@
 import React, { Component } from "react";
+import "./Game.css";
 
 class Game extends Component {
   // initialize state
   constructor(props) {
     super(props);
     this.state = {
-      num: 0,
+      isRolling: false,
+      dice1: "one",
+      dice2: "one",
     };
     //this is called out of context
     // so bind it to the class
-    this.handleClick = this.handleClick.bind(this);
+    this.handleRoll = this.handleRoll.bind(this);
   }
 
-  handleClick(event) {
-    const randNum = Math.floor(Math.random() * 10);
-    this.setState({ num: randNum });
-    console.log("state changed");
+  handleRoll(event) {
+    let diceHeads = ["one", "two", "three", "four", "five", "six"];
+
+    let rand1 = diceHeads[Math.floor(Math.random() * diceHeads.length)];
+    let rand2 = diceHeads[Math.floor(Math.random() * diceHeads.length)];
+
+    this.setState({ dice1: rand1, dice2: rand2, isRolling: true });
+
+    if (this.state.isRolling) {
+    }
   }
 
   render() {
-    const el =
-      this.state.num !== 7 ? (
-        <button onClick={this.handleClick}>Random number</button>
-      ) : (
-        <p>You Win!</p>
-      );
+    let { dice1, dice2 } = this.state;
     return (
-      <div>
-        {/* // use it */}
-        <h1>Number is {this.state.num}</h1>
-        {el}
+      <div className="icon">
+        <div>
+          <i className={`fas fa-dice-${dice1}`}></i>
+          <i className={`fas fa-dice-${dice2}`}></i>
+        </div>
+
+        <button className="roll-btn" onClick={this.handleRoll}>
+          Roll Dice!
+        </button>
       </div>
     );
   }
